@@ -14,7 +14,6 @@ type IsInvariant<C, P> = IsCovariant<C, P> extends false
     : false
   : false;
 
-
 interface IAnimal {
   name: string;
 }
