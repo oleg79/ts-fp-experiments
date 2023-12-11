@@ -3,9 +3,9 @@ import { Maybe as M } from "./typeclasses2.ts";
 import { Endomorphism, Morphism } from "./morphism.ts";
 
 interface Semiring<A> {
-  plus: F2<A, A>;
+  plus: FF<A, A>;
   zero: A;
-  times: F2<A, A>;
+  times: FF<A, A>;
   one: A;
 }
 
@@ -94,8 +94,7 @@ console.log(
   ),
 );
 
-type N = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-const m: Record<N, string> = {
+const m = {
   1: "one",
   2: "two",
   3: "three",
@@ -106,7 +105,9 @@ const m: Record<N, string> = {
   8: "eight",
   9: "nine",
   10: "ten",
-};
+} as const;
+
+type N = keyof typeof m;
 type English = F<N, string>;
 const english: English = (n) => m[n];
 
